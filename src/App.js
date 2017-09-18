@@ -1,11 +1,11 @@
 import React, { Component } from "react";
 import "./App.css";
-import UserDetailContainer from "./containers/UserDetailContainer";
-import ListOfUsers from "./components/ListOfUsers";
-import CreateUser from "./components/CreateUser";
-import SearchBox from "./components/SearchBox";
 import {connect} from "react-redux";
 import {loadUsers} from "./actions";
+import UserDetailContainer from "./containers/UserDetailContainer";
+import ListofUsersContainer from "./containers/ListOfUsersContainer";
+import CreateUser from "./components/CreateUser";
+import SearchBox from "./components/SearchBox";
 
 
 class App extends Component {
@@ -17,30 +17,25 @@ class App extends Component {
 // are ready to do something
 // this starts any actions that are going to do a fetch call
  componentDidMount() {
-    fetch("/users")
-    .then( (response) => {
-      return response.json();
-    }).then((users) => {
-      this.setState({users});
-    });
+    this.props.loadUsers();
   }
-
  render() {
    return (
-     <div>
-       <SearchBox />
-       <ListOfUsers users={this.state.users} searchText={""} />
-       <CreateUser />
-       <UserDetailContainer />
-     </div>
+      <div>
+        <SearchBox />
+        <ListofUsersContainer />
+        <CreateUser />
+        <UserDetailContainer />
+      </div>
    );
  }
 }
 function mapDispatchToProps(dispatch) {
  return {
-   loadData() {
-     dispatch(loadUsers());
-   }
- };
-}
+      loadUsers:function(user){
+        dispatch(loadUsers(user));
+      }
+    }
+  }
+  
 export default connect(null,mapDispatchToProps)(App);
