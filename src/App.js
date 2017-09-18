@@ -1,18 +1,41 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
 import "./App.css";
+import {connect} from "react-redux";
+import {loadUsers} from "./actions";
 import UserDetailContainer from "./containers/UserDetailContainer";
-import ListOfUsersContainer from "./containers/ListOfUsersContainer";
+import ListofUsersContainer from "./containers/ListOfUsersContainer";
+import CreateUser from "./components/CreateUser";
 import SearchBox from "./components/SearchBox";
 
-function App(props) {
-  return (
-    <div>
-      <SearchBox />
-      <ListOfUsersContainer />
-      <UserDetailContainer />
-    </div>
-  );
-}
 
-export default App;
+class App extends Component {
+ constructor() {
+   super();
+   this.state = {users: []};
+  }
+//  a special method called by React when your components 
+// are ready to do something
+// this starts any actions that are going to do a fetch call
+ componentDidMount() {
+    this.props.loadUsers();
+  }
+ render() {
+   return (
+      <div>
+        <SearchBox />
+        <ListofUsersContainer />
+        <CreateUser />
+        <UserDetailContainer />
+      </div>
+   );
+ }
+}
+function mapDispatchToProps(dispatch) {
+ return {
+      loadUsers:function(user){
+        dispatch(loadUsers(user));
+      }
+    }
+  }
+  
+export default connect(null,mapDispatchToProps)(App);
