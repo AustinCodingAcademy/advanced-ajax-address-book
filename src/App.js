@@ -4,6 +4,7 @@ import "./App.css";
 import UserDetailContainer from "./containers/UserDetailContainer";
 import ListOfUsersContainer from "./containers/ListOfUsersContainer";
 import SearchBox from "./components/SearchBox";
+import CreateUser from "./components/CreateUser";
 
 function App(props) {
   return (
@@ -11,6 +12,7 @@ function App(props) {
       <SearchBox />
       <ListOfUsersContainer />
       <UserDetailContainer />
+      <CreateUser />
     </div>
   );
 }

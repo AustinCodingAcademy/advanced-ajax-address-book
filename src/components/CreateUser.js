@@ -1,12 +1,9 @@
 import React, { Component } from "react";
-import {connect} from "react-redux";
-import {createUser} from "../actions";
 
 class CreateUser extends Component {
-  constructor() {
-    super();
-    this.state = {};
-  }
+  state = {
+  };
+
   render() {
     return (
       <div>
@@ -37,11 +34,5 @@ class CreateUser extends Component {
       </div>);
   }
 }
-function mapDispatchToProps(dispatch) {
-  return {
-    save: function saveUser(user) {
-      dispatch(createUser(user));
-    }
-  };
-}
-export default connect(null,mapDispatchToProps)(CreateUser);
+
+export default (CreateUser);
