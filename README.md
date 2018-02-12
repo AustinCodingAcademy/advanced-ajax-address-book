@@ -37,3 +37,11 @@ Postman is fine, but this is only for testing. It is of no use to our software i
 * Make sure that function gets into CreateUser props.save somehow
 * Observe the network tab to see if your fetch is working, db.json should be updating.
 * If everything is working, does the web page show the new user you just created? Should it?
+
+## Part 4. Practice Fetch and Redux
+We have used fetch to retrieve data from the server and change data on the server. This is fine but we stopped using redux. We need to be able to use fetch with redux. I dont' want App to care about users. I don't want to pass props. By default, redux doesn't work with fetch. We need to add another tool to add this capability. 
+* Use the redux thunk checklist.
+* Setup the redux thunk middleware in store.js
+* Create the action creator functions for the things we are doing, getUsers, saveUser ..etc
+* Move the fetch code into these actions.
+* Change the code to use Containers again.
