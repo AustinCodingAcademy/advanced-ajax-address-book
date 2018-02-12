@@ -11,7 +11,8 @@ class ListOfUsers extends Component {
     if(this.state.visible){
       buttonText = "Hide";
       const filterUsers = this.props.users.filter((u) => {
-        return u.first_name.indexOf(this.props.searchText) > -1;
+        return !this.props.searchText || this.props.searchText.length === 0 || ( 
+        u.first_name.indexOf(this.props.searchText) > -1);
       });
       userDivs = filterUsers.map((user) => {
         return <div>
