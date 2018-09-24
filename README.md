@@ -4,7 +4,7 @@
 
 * After doing a yarn start, notice what is happening in the web page. 
 * Notice the url http://localhost:5100
-* Notice the the url http://localhost:4000/users
+* Notice the url http://localhost:4000/users
 * Why are there 2 different URLs 5100 vs 4000 ?
 * Use postman to practice making a http get request to get all users
 * Use postman to practice making a http get request to get one user
